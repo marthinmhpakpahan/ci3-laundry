@@ -13,8 +13,8 @@ class AccountModel extends CI_Model {
         {
             $data = $query->row();
             if (password_verify($password, $data->password)) {
-                $this->session->set_userdata('username', $username);
-				$this->session->set_userdata('id', $data->id);
+                $this->session->set_userdata('login_username', $username);
+				$this->session->set_userdata('login_id', $data->id);
 				$this->session->set_userdata('is_login', TRUE);
                 return TRUE;
             } else {

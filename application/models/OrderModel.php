@@ -8,7 +8,12 @@ class OrderModel extends CI_Model {
     }
 
     public function index() {
-        return $this->db->get($this->table)->result();
+        $this->db->select('order.*, account.full_name, item.description');
+        $this->db->from('order');
+        $this->db->join('account', 'account.id = order.user_id', 'left');
+        $this->db->join('item', 'item.id = order.item_id', 'inner');
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function generateRandomString($length = 10) {

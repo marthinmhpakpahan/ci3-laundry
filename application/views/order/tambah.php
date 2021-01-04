@@ -137,11 +137,13 @@
                                     placeholder="Total Berat (Kg)">
                             </div>
                             <div class="col-md-6 col-xs-12 col-lg-6">
-                                <input type="number" name="total_price" class="form-control"
+                                <input type="number" name="price_label" class="form-control"
                                     placeholder="Total Biaya" disabled>
+                                <input type="hidden" name="total_price" class="form-control"
+                                    placeholder="Total Biaya">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success float-right">
+                        <button id="btn-submit-order" type="submit" class="btn btn-success float-right">
                             Simpan
                         </button>
                     </form>
@@ -156,3 +158,19 @@
 <?php
     $this->view('base/menu_footer');
 ?>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    $('input[name="weight"]').on("input", function(){
+        var weight = $("input[name='weight']").val();
+        var price = $("select[name='item_id'] option:selected" ).attr('data-price');
+        if(price !== undefined) {
+            console.log(weight);
+            console.log(price);
+            var total_price = weight * price;
+            $("input[name='price_label']").val(total_price);
+            $("input[name='total_price']").val(total_price);
+        }
+    });
+});
+</script>

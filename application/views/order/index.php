@@ -103,19 +103,32 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <td>No</td>
-                                <td>Nama</td>
-                                <td>Deskripsi</td>
-                                <td>Action</td>
+                                <td>Booking Code</td>
+                                <td>Nama Pelanggan</td>
+                                <td>Email Pelanggan</td>
+                                <td>No Telp Pelanggan</td>
+                                <td>Jenis Item</td>
+                                <td>Total Berat</td>
+                                <td>Total Harga</td>
+                                <td>PIC</td>
+                                <td>Status</td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($data as $key => $value) { ?>
                                 <tr>
-                                    <td><?php echo ($key+1); ?></td>
-                                    <td><?php //echo $value->name; ?></td>
-                                    <td><?php //echo $value->description; ?></td>
-                                    <td></td>
+                                    <td><?php echo $value->booking_code; ?></td>
+                                    <td><?php echo $value->owner_name; ?></td>
+                                    <td><?php echo $value->owner_email; ?></td>
+                                    <td><?php echo $value->owner_phone; ?></td>
+                                    <td><?php echo $value->description; ?></td>
+                                    <td><?php echo $value->weight . " Kg"; ?></td>
+                                    <td><?php echo "Rp. " . $value->total_price; ?></td>
+                                    <td><?php echo $value->full_name; ?></td>
+                                    <td class="row">
+                                        <a data-order-id="<?php echo $value->id; ?>" href="" class="btn-update-progress btn btn-success" data-toggle="modal" data-target="#updateProgressModal">
+                                        <i class="fas fa-search fa-sm text-white-50"></i></a>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -131,3 +144,22 @@
 <?php
     $this->view('base/menu_footer');
 ?>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.btn-update-progress').on('click', function(){
+        var order_id = $(this).attr('data-order-id');
+        console.log(order_id);
+        $.get( "<?php echo base_url(); ?>order/getorderstatus?order_id=" + order_id, function( data ) {
+            let content = "";
+            if(data.length > 0) {
+                for(let i=0; i<data.length; i++) {
+                    content += "<tr><td>" + data[i].created + "</td><td>" + data[i].name + "</td></tr>";
+                }
+            }
+            $('#updateProgressModal table#tableProgressModal tbody').html(content);
+        });
+        $('#updateProgressModal input[name="order_id"]').val(order_id);
+    });
+});
+</script>

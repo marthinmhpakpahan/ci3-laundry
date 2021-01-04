@@ -59,6 +59,7 @@ $route['dashboard'] = 'dashboard/index';
     Account Routes
 */
 $route['login'] = 'account/login';
+$route['logout'] = 'account/logout';
 $route['register'] = 'account/register';
 
 /*
@@ -68,13 +69,15 @@ $route['kategori'] = 'kategori/index';
 $route['kategori/tambah'] = 'kategori/create';
 
 /*
-    Kategori Routes
+    Item Routes
 */
 $route['item'] = 'item/index';
 $route['item/tambah'] = 'item/create';
 
 /*
-    Kategori Routes
+    Order Routes
 */
 $route['order'] = 'order/index';
 $route['order/tambah'] = 'order/create';
+$route['order/updatestatus'] = 'order/updatestatus';
+$route['order/getorderstatus'] = 'order/getorderstatus';
