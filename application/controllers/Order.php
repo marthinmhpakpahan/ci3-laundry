@@ -37,6 +37,16 @@ class Order extends CI_Controller {
 		echo json_encode($data); exit;
 	}
 
+	public function tracking() {
+		$booking_code = $this->input->get("booking_code");
+		$order_status = [];
+		$order_status = $this->OrderStatusModel->getByBookingCode($booking_code);
+		$this->load->view('order/tracking', [
+			'booking_code' => $booking_code,
+			'order_status' => $order_status
+		]);
+	}
+
     public function create() {
         if(empty($this->session->userdata('is_login'))) {
 			redirect('login');

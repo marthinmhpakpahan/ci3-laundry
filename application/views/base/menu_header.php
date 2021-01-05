@@ -101,7 +101,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="<?php echo base_url(); ?>tracking" target="_blank">
                     <i class="fas fa-fw fa-map-marked-alt"></i>
                     <span>Tracking</span></a>
             </li>

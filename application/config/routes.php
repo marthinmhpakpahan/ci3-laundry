@@ -81,3 +81,5 @@ $route['order'] = 'order/index';
 $route['order/tambah'] = 'order/create';
 $route['order/updatestatus'] = 'order/updatestatus';
 $route['order/getorderstatus'] = 'order/getorderstatus';
+
+$route['tracking'] = 'order/tracking';
