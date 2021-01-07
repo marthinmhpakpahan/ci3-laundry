@@ -61,6 +61,10 @@ $route['dashboard'] = 'dashboard/index';
 $route['login'] = 'account/login';
 $route['logout'] = 'account/logout';
 $route['register'] = 'account/register';
+$route['karyawan'] = 'account/index';
+$route['karyawan/enableAccount'] = 'account/enableAccount';
+$route['karyawan/disableAccount'] = 'account/disableAccount';
+$route['karyawan/tambah'] = 'account/tambah';
 
 /*
     Kategori Routes

@@ -43,7 +43,7 @@
                 <div id="collapseKaryawan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?php echo base_url(); ?>karyawan"><i class="fas fa-fw fa-list"></i> List Karyawan</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>karywan/tambah"><i class="fas fa-fw fa-plus-circle"></i> Tambah Karyawan</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>karyawan/tambah"><i class="fas fa-fw fa-plus-circle"></i> Tambah Karyawan</a>
                     </div>
                 </div>
             </li>

@@ -7,6 +7,7 @@ class Item extends CI_Controller {
 		parent::__construct();
 		$this->load->model("ItemModel");
 		$this->load->model("KategoriModel");
+		$this->load->model("DashboardModel");
 	}
 
 	public function index() {
@@ -15,7 +16,17 @@ class Item extends CI_Controller {
 		}
 
 		$data = $this->ItemModel->index();
-		$this->load->view('item/index', ["data" => $data]);
+		$karyawan_total = $this->DashboardModel->getTotalKaryawan();
+		$order_total = $this->DashboardModel->getTotalOrder();
+		$income_total = $this->DashboardModel->getTotalIncome();
+		$finished_total = $this->DashboardModel->getTotalFinishedOrder();
+		$this->load->view('item/index', [
+			"data" => $data,
+			"karyawan_total" => $karyawan_total,
+			"order_total" => $order_total,
+			"income_total" => $income_total,
+			"finished_total" => $finished_total
+		]);
 	}
 
 	public function create() {
@@ -24,6 +35,10 @@ class Item extends CI_Controller {
 		}
 
 		$kategori = $this->KategoriModel->index();
+		$karyawan_total = $this->DashboardModel->getTotalKaryawan();
+		$order_total = $this->DashboardModel->getTotalOrder();
+		$income_total = $this->DashboardModel->getTotalIncome();
+		$finished_total = $this->DashboardModel->getTotalFinishedOrder();
 
 		if($this->input->server('REQUEST_METHOD') === 'POST') {
 			$this->form_validation->set_rules('category_id', 'Kategori', 'required');
@@ -38,10 +53,22 @@ class Item extends CI_Controller {
 				$this->ItemModel->save($data);
 				redirect('item');
 			} else {
-				$this->load->view('item/tambah', ['kategori' => $kategori]);
+				$this->load->view('item/tambah', [
+					'kategori' => $kategori,
+					"karyawan_total" => $karyawan_total,
+					"order_total" => $order_total,
+					"income_total" => $income_total,
+					"finished_total" => $finished_total
+				]);
 			}
 		} else {
-			$this->load->view('item/tambah', ['kategori' => $kategori]);
+			$this->load->view('item/tambah', [
+				'kategori' => $kategori,
+				"karyawan_total" => $karyawan_total,
+				"order_total" => $order_total,
+				"income_total" => $income_total,
+				"finished_total" => $finished_total
+			]);
 		}
     }
 

@@ -9,6 +9,7 @@ class Order extends CI_Controller {
 		$this->load->model("ItemModel");
 		$this->load->model("OrderStatusListModel");
 		$this->load->model("OrderStatusModel");
+		$this->load->model("DashboardModel");
 	}
 
 	public function index() {
@@ -17,8 +18,19 @@ class Order extends CI_Controller {
 		}
 
         $data = $this->OrderModel->index();
+		$karyawan_total = $this->DashboardModel->getTotalKaryawan();
+		$order_total = $this->DashboardModel->getTotalOrder();
+		$income_total = $this->DashboardModel->getTotalIncome();
 		$order_status = $this->OrderStatusListModel->index();
-		$this->load->view('order/index', ["data" => $data, "order_status" => $order_status]);
+		$finished_total = $this->DashboardModel->getTotalFinishedOrder();
+		$this->load->view('order/index', [
+			"data" => $data,
+			"order_status" => $order_status,
+			"karyawan_total" => $karyawan_total,
+			"order_total" => $order_total,
+			"income_total" => $income_total,
+			"finished_total" => $finished_total
+		]);
 	}
 
 	public function updatestatus() {
@@ -54,6 +66,10 @@ class Order extends CI_Controller {
 
 		$booking_code = $this->OrderModel->generateRandomString(6);
 		$items = $this->ItemModel->index();
+		$karyawan_total = $this->DashboardModel->getTotalKaryawan();
+		$order_total = $this->DashboardModel->getTotalOrder();
+		$income_total = $this->DashboardModel->getTotalIncome();
+		$finished_total = $this->DashboardModel->getTotalFinishedOrder();
 
 		if($this->input->server('REQUEST_METHOD') === 'POST') {
 			$this->form_validation->set_rules('owner_name', 'Nama Pelanggan', 'required');
@@ -77,13 +93,21 @@ class Order extends CI_Controller {
 			} else {
 				$this->load->view('order/tambah', [
 					'booking_code' => $booking_code,
-					'items' => $items
+					'items' => $items,
+					"karyawan_total" => $karyawan_total,
+					"order_total" => $order_total,
+					"income_total" => $income_total,
+					"finished_total" => $finished_total
 				]);
 			}
 		} else {
 			$this->load->view('order/tambah', [
 				'booking_code' => $booking_code,
-				'items' => $items
+				'items' => $items,
+				"karyawan_total" => $karyawan_total,
+				"order_total" => $order_total,
+				"income_total" => $income_total,
+				"finished_total" => $finished_total,
 			]);
 		}
     }

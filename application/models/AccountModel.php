@@ -7,8 +7,23 @@ class AccountModel extends CI_Model {
         return $this->db->insert($this->table, $data);
     }
 
+    public function getKaryawan() {
+        $query = "SELECT * FROM laundry.account WHERE role_id = 2";
+        return $this->db->query($query)->result();
+    }
+
+    public function enableAccount($account_id) {
+        $query = "UPDATE laundry.account SET status = 1 WHERE id = $account_id";
+        return $this->db->query($query);
+    }
+
+    public function disableAccount($account_id) {
+        $query = "UPDATE laundry.account SET status = 0 WHERE id = $account_id";
+        return $this->db->query($query);
+    }
+
     public function validUser($username, $password) {
-        $query = $this->db->get_where('account',array('username'=>$username));
+        $query = $this->db->get_where('account',array('username'=>$username, 'status' => 1));
         if($query->num_rows() > 0)
         {
             $data = $query->row();
