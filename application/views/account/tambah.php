@@ -8,8 +8,8 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Tambah Pesanan</h1>
-        <a href="<?php echo base_url(); ?>order" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-list fa-sm text-white-50"></i> List Pesanan</a>
+        <a href="<?php echo base_url(); ?>karyawan" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-list fa-sm text-white-50"></i> List Karyawan</a>
     </div>
 
     <!-- Content Row -->
