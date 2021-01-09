@@ -31,6 +31,7 @@ class AccountModel extends CI_Model {
                 $this->session->set_userdata('login_username', $username);
 				$this->session->set_userdata('login_id', $data->id);
 				$this->session->set_userdata('is_login', TRUE);
+                $this->session->set_userdata('login_role', $data->role_id);
                 return TRUE;
             } else {
                 return FALSE;

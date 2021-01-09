@@ -8,7 +8,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url(); ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-tshirt"></i>
                 </div>
@@ -34,6 +34,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            <?php if($this->session->userdata('login_role') == 1) { ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKaryawan"
                     aria-expanded="true" aria-controls="collapseKaryawan">
@@ -47,6 +48,7 @@
                     </div>
                 </div>
             </li>
+            <?php } ?>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">

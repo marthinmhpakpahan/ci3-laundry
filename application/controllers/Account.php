@@ -59,6 +59,7 @@ class Account extends CI_Controller {
 		$this->session->unset_userdata('login_username');
 		$this->session->unset_userdata('login_id');
 		$this->session->unset_userdata('is_login');
+		$this->session->unset_userdata('login_role');
 		redirect('login');
     }
 
