@@ -12,11 +12,8 @@ class OrderStatusModel extends CI_Model {
     }
 
     public function get($order_id) {
-        $this->db->select('order_status.*, order_status_list.name');
-        $this->db->from('order_status');
-        $this->db->join('order_status_list', 'order_status.status_id = order_status_list.id', 'inner');
-        $query = $this->db->get();
-        return $query->result();
+        $query = "SELECT order_status.*, order_status_list.name FROM order_status INNER JOIN order_status_list ON order_status.status_id = order_status_list.id WHERE order_status.order_id = $order_id";
+        return $this->db->query($query)->result();
     }
 
     public function getByBookingCode($booking_code) {
