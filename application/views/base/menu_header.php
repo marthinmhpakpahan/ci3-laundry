@@ -9,8 +9,8 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url(); ?>">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-tshirt"></i>
+                <div class="sidebar-brand-icon">
+                    <img src="<?php echo base_url(); ?>assets/img/logomagrivyy.jpeg" height="40px" width="40px" />
                 </div>
                 <div class="sidebar-brand-text mx-3">MAGRIVVY</div>
             </a>
@@ -87,13 +87,28 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
                     aria-expanded="true" aria-controls="collapseOrders">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Orders</span>
+                    <span>Pesanan</span>
                 </a>
                 <div id="collapseOrders" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?php echo base_url(); ?>order"><i class="fas fa-fw fa-list"></i> List Order</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>order/tambah"><i class="fas fa-fw fa-plus-circle"></i> Tambah Order</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport"
+                    aria-expanded="true" aria-controls="collapseReport">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Laporan</span>
+                </a>
+                <div id="collapseReport" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?php echo base_url(); ?>report"><i class="fas fa-fw fa-list"></i> Laporan Bulanan</a>
                     </div>
                 </div>
             </li>

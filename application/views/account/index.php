@@ -24,7 +24,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Data</h6>
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <td>No</td>
@@ -42,18 +42,26 @@
                                     <td><?php echo $value->full_name; ?></td>
                                     <td><?php echo $value->email; ?></td>
                                     <td><?php echo $value->phone; ?></td>
-                                    <td><?php echo $value->address; ?></td>
+                                    <td><?php echo substr($value->address, 0, 30) . "..."; ?></td>
                                     <td>
                                         <?php
                                             $label_active = "Nonaktifkan";
-                                            $url = "http://mmhp.tech/karyawan/disableAccount?account_id=" . $value->id;
+                                            $fa_label = "fa-window-close";
+                                            $url = base_url() . "karyawan/disableAccount?account_id=" . $value->id;
                                             if($value->status == 0) {
                                                 $label_active = "Aktifkan";
-                                                $url = "http://mmhp.tech/karyawan/enableAccount?account_id=" . $value->id;
+                                                $fa_label = "fa-check";
+                                                $url = base_url() . "karyawan/enableAccount?account_id=" . $value->id;
                                             }
                                         ?>
-                                        <a href="<?php echo $url; ?>" class="btn btn-<?php echo ($value->status == 0 ? "success" : "danger"); ?>">
-                                        <?php echo $label_active; ?></a>
+                                        <a data-toggle="tooltip" data-placement="top" title="Detail Karyawan" href="<?= base_url() .'karyawan/'. $value->id ?>" class="btn btn-primary">
+                                        <i class="fas fa-fw fa-search"></i></a>
+                                        <a data-toggle="tooltip" data-placement="top" title="<?= $label_active; ?>" href="<?php echo $url; ?>" class="btn btn-<?php echo ($value->status == 0 ? "success" : "warning"); ?>">
+                                        <i class="fas fa-fw <?= $fa_label; ?>"></i></a>
+                                        <span data-toggle="modal" data-target="#deleteAccountModal"> <!-- Handle multiple toggle -->
+                                            <a data-user-id="<?= $value->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus Karyawan" class="btn btn-danger btn-delete-account">
+                                            <i class="fas fa-fw fa-trash"></i></a>
+                                        </span>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -70,3 +78,12 @@
 <?php
     $this->view('base/menu_footer');
 ?>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.btn-delete-account').on('click', function(){
+        var user_id = $(this).attr('data-user-id');
+        $('#deleteAccountModal a.btn-confirmation-yes').attr('href', '<?= base_url(); ?>karyawan/delete/' + user_id);
+    });
+});
+</script>

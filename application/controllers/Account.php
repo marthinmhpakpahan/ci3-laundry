@@ -63,8 +63,20 @@ class Account extends CI_Controller {
 		redirect('login');
     }
 
-    public function profile() {
+    public function detail($id) {
+		if(empty($this->session->userdata('is_login'))) {
+			redirect('login');
+		}
+		$user = $this->AccountModel->detail($id);
+		$this->load->view('account/view', [
+			"data" => $user
+		]);
     }
+
+	public function delete($id) {
+		$this->AccountModel->delete($id);
+		redirect('karyawan');
+	}
 
     public function register() {
 		if(!empty($this->session->userdata('is_login')) && $this->session->userdata('is_login')) {

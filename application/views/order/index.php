@@ -29,13 +29,12 @@
                             <tr>
                                 <td>Booking Code</td>
                                 <td>Nama Pelanggan</td>
-                                <td>Email Pelanggan</td>
-                                <td>No Telp Pelanggan</td>
                                 <td>Jenis Item</td>
                                 <td>Total Berat</td>
                                 <td>Total Harga</td>
                                 <td>PIC</td>
                                 <td>Status</td>
+                                <td>#</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,15 +42,20 @@
                                 <tr>
                                     <td><?php echo $value->booking_code; ?></td>
                                     <td><?php echo $value->owner_name; ?></td>
-                                    <td><?php echo $value->owner_email; ?></td>
-                                    <td><?php echo $value->owner_phone; ?></td>
                                     <td><?php echo $value->description; ?></td>
                                     <td><?php echo $value->weight . " Kg"; ?></td>
                                     <td><?php echo "Rp. " . $value->total_price; ?></td>
                                     <td><?php echo $value->full_name; ?></td>
+                                    <td><?php echo $value->status; ?></td>
                                     <td class="row">
-                                        <a data-order-id="<?php echo $value->id; ?>" href="" class="btn-update-progress btn btn-success" data-toggle="modal" data-target="#updateProgressModal">
-                                        <i class="fas fa-search fa-sm text-white-50"></i></a>
+                                        <a data-toggle="tooltip" data-placement="top" title="Detail Pesanan" href="#" class="btn btn-primary">
+                                        <i class="fas fa-fw fa-search"></i></a> &nbsp;
+                                        <?php if(strtolower($value->status) != "telah diterima" && strtolower($value->status) != "batal") { ?>
+                                            <span data-toggle="modal" data-target="#updateProgressModal"> <!-- Handle multiple toggle -->
+                                                <a data-toggle="tooltip" data-placement="top" title="Ubah Status" data-order-id="<?php echo $value->id; ?>" class="btn-update-progress btn btn-success">
+                                                <i class="fas fa-fw fa-edit"></i></a>
+                                            </span>
+                                        <?php } ?>
                                     </td>
                                 </tr>
                             <?php } ?>

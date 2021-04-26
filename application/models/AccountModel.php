@@ -7,6 +7,16 @@ class AccountModel extends CI_Model {
         return $this->db->insert($this->table, $data);
     }
 
+    public function detail($id) {
+        $query = "SELECT * FROM laundry.account WHERE id = $id LIMIT 1";
+        return $this->db->query($query)->row();
+    }
+
+    public function delete($id) {
+        $query = "UPDATE laundry.account SET role_id = 0 WHERE id = $id";
+        return $this->db->query($query);
+    }
+
     public function getKaryawan() {
         $query = "SELECT * FROM laundry.account WHERE role_id = 2";
         return $this->db->query($query)->result();
