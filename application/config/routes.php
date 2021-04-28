@@ -64,6 +64,7 @@ $route['register'] = 'account/register';
 $route['karyawan'] = 'account/index';
 $route['karyawan/(:num)'] = 'account/detail/$1';
 $route['karyawan/delete/(:num)'] = 'account/delete/$1';
+$route['karyawan/update/(:num)'] = 'account/update/$1';
 $route['karyawan/enableAccount'] = 'account/enableAccount';
 $route['karyawan/disableAccount'] = 'account/disableAccount';
 $route['karyawan/tambah'] = 'account/tambah';

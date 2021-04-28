@@ -9,7 +9,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detail Karyawan</h1>
         <a href="<?php echo base_url(); ?>karyawan" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-list fa-sm text-white-50"></i> List Karyawan</a>
+                class="fas fa-list fa-sm"></i> List Karyawan</a>
     </div>
 
     <!-- Content Row -->
@@ -21,13 +21,22 @@
             <!-- Project Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">#<?= $data->username; ?></h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="text-primary">#<?= $data->username; ?></h4>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="/karyawan/update/<?= $data->id; ?>" class="btn btn-sm btn-success float-right"><i class="fas fa-edit fa-sm"></i> Ubah Data</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="container">
                         <table class="table">
                             <tr>
-                                <td style="width: 250px;" rowspan="5">Images</td>
+                                <td style="width: 250px;" rowspan="5">
+                                    <img src="<?= base_url() . "uploads/users/" . $data->image; ?>" style="max-width: 230px; margin: 10px;"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td style="width: 250px;">Nama Lengkap</td><td>: <?= $data->full_name; ?></td>

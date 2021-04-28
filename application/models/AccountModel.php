@@ -7,6 +7,11 @@ class AccountModel extends CI_Model {
         return $this->db->insert($this->table, $data);
     }
 
+    public function update($data, $id) {
+        $this->db->where('id', $id);
+        return $this->db->update($this->table, $data);
+    }
+
     public function detail($id) {
         $query = "SELECT * FROM laundry.account WHERE id = $id LIMIT 1";
         return $this->db->query($query)->row();
@@ -51,6 +56,21 @@ class AccountModel extends CI_Model {
         {
             return FALSE;
         }
+    }
+
+    public function uploadProfileImage($user_id) {
+        $config['upload_path']          = './uploads/users/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = $user_id;
+        $config['overwrite']			= true;
+        $config['max_size']             = 1024; // 1MB
+
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('image')) {
+            return $this->upload->data("file_name");
+        }
+
+        return "default.jpg";
     }
 }
 

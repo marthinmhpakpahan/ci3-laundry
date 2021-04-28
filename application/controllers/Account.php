@@ -73,6 +73,35 @@ class Account extends CI_Controller {
 		]);
     }
 
+	public function update($id) {
+		if(empty($this->session->userdata('is_login'))) {
+			redirect('login');
+		}
+
+		if($this->input->server('REQUEST_METHOD') === 'POST') {
+			$this->form_validation->set_rules('full_name', 'Full Name', 'required');
+			$this->form_validation->set_rules('username', 'Username', 'required|is_unique[account.username]');
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+			$this->form_validation->set_rules('phone', 'Phone Number', 'required');
+			$this->form_validation->set_rules('address', 'Address', 'required');
+
+			$data = [];
+			$data['full_name'] = $this->input->post('full_name');
+			$data['username'] = $this->input->post('username');
+			$data['email'] = $this->input->post('email');
+			$data['phone'] = $this->input->post('phone');
+			$data['address'] = $this->input->post('address');
+			$data['image'] = $this->AccountModel->uploadProfileImage($id);
+			$this->AccountModel->update($data, $id);
+			redirect('karyawan/' . $id);
+		} else {
+			$user = $this->AccountModel->detail($id);
+			$this->load->view('account/ubah', [
+				"data" => $user
+			]);
+		}
+    }
+
 	public function delete($id) {
 		$this->AccountModel->delete($id);
 		redirect('karyawan');

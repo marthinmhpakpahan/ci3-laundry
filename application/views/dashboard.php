@@ -39,7 +39,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Total Penghasilan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "Rp. " . (array_key_exists("total", $income_total) ? $income_total->total : 0); ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "Rp. " . (property_exists($income_total, "total") ? $income_total->total : 0); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -75,7 +75,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 Order Selesai</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo (array_key_exists("total", $finished_total) ? $finished_total->total : 0) ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo (property_exists($finished_total, "total") ? $finished_total->total : 0) ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>

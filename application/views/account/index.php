@@ -9,7 +9,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">List Karyawan</h1>
         <a href="<?php echo base_url(); ?>karyawan/tambah" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus-circle fa-sm text-white-50"></i> Tambah Karyawan</a>
+                class="fas fa-plus-circle fa-sm"></i> Tambah Karyawan</a>
     </div>
 
     <!-- Content Row -->
@@ -56,6 +56,8 @@
                                         ?>
                                         <a data-toggle="tooltip" data-placement="top" title="Detail Karyawan" href="<?= base_url() .'karyawan/'. $value->id ?>" class="btn btn-primary">
                                         <i class="fas fa-fw fa-search"></i></a>
+                                        <a data-toggle="tooltip" data-placement="top" title="Update Karyawan" href="<?= base_url() .'karyawan/update/'. $value->id ?>" class="btn btn-primary">
+                                        <i class="fas fa-fw fa-edit"></i></a>
                                         <a data-toggle="tooltip" data-placement="top" title="<?= $label_active; ?>" href="<?php echo $url; ?>" class="btn btn-<?php echo ($value->status == 0 ? "success" : "warning"); ?>">
                                         <i class="fas fa-fw <?= $fa_label; ?>"></i></a>
                                         <span data-toggle="modal" data-target="#deleteAccountModal"> <!-- Handle multiple toggle -->
