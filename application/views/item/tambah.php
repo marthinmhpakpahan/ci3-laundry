@@ -30,7 +30,7 @@
                                 <select class="form-control" name="category_id" id="category">
                                     <option value="">Pilih Kategori</option>
                                     <?php foreach ($kategori as $key => $value) { ?>
-                                        <option value="<?php echo $value->id; ?>"><?php echo $value->name . " (" . $value->description . ")"; ?></option>
+                                        <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -45,8 +45,10 @@
                                         }
                                     }
                                 ?>
-                                <input type="number" name="price" class="form-control <?php echo $valid_price; ?>"
-                                    placeholder="Harga Kiloan" value="<?php echo isset($_POST['price']) ? $_POST['price'] : ''; ?>">
+                                <div class="input-group">
+                                    <div class="input-group-append"><button class="btn btn-primary">Rp</button></div>
+                                    <input type="number" name="price" value="<?php echo isset($_POST['price']) ? $_POST['price'] : ''; ?>" class="form-control <?php echo $valid_price; ?>" placeholder="Harga Kiloan" />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">

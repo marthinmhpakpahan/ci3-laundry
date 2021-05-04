@@ -9,7 +9,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">List Item</h1>
         <a href="<?php echo base_url(); ?>item/tambah" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus-circle fa-sm text-white-50"></i> Tambah Item</a>
+                class="fas fa-plus-circle fa-sm"></i> Tambah Item</a>
     </div>
 
     <!-- Content Row -->
@@ -31,7 +31,7 @@
                                 <td>Kategori</td>
                                 <td>Harga/Kg</td>
                                 <td>Deskripsi</td>
-                                <td>Action</td>
+                                <td>#</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,7 +41,16 @@
                                     <td><?php echo $value->name; ?></td>
                                     <td><?php echo "Rp. " . $value->price; ?></td>
                                     <td><?php echo $value->description; ?></td>
-                                    <td></td>
+                                    <td width="150px">
+                                        <span data-toggle="modal" data-target="#updateItemModal"> <!-- Handle multiple toggle -->
+                                            <a data-item-id="<?= $value->id; ?>" data-toggle="tooltip" data-placement="top" title="Ubah Item" class="btn btn-success btn-update-item">
+                                            <i class="fas fa-fw fa-edit"></i></a>
+                                        </span>
+                                        <span data-toggle="modal" data-target="#confirmationModal"> <!-- Handle multiple toggle -->
+                                            <a data-item-id="<?= $value->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus Item" class="btn btn-danger btn-delete-item">
+                                            <i class="fas fa-fw fa-trash"></i></a>
+                                        </span>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -57,3 +66,26 @@
 <?php
     $this->view('base/menu_footer');
 ?>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.btn-delete-item').on('click', function(){
+        var id = $(this).attr('data-item-id');
+        $('#confirmationModal div.modal-body').text("Apakah anda yakin ingin menghapus item ini?");
+        $('#confirmationModal a.btn-confirmation-yes').attr('href', '<?= base_url(); ?>item/delete/' + id);
+    });
+
+    $('.btn-update-item').on('click', function(event){
+        event.preventDefault();
+        var id = $(this).attr('data-item-id');
+        $.get("<?= base_url(); ?>/item/" + id, function(data) {
+            $('#updateItemModal form').attr('action', '/item/update/' + id);
+            $('#updateItemModal select option[value='+ data.category_id +']').prop('selected', true);
+            $('#updateItemModal input[name=name]').val(data.name);
+            $('#updateItemModal input[name=price]').val(data.price);
+            $('#updateItemModal textarea[name=description]').text(data.description);
+            $('#updateItemModal').modal('show');
+        });
+    });
+});
+</script>

@@ -67,4 +67,39 @@ class Kategori extends CI_Controller {
 		}
     }
 
+	public function delete($id) {
+		$this->KategoriModel->delete($id);
+		redirect('kategori');
+	}
+
+	public function detail($id) {
+		if(empty($this->session->userdata('is_login'))) {
+			redirect('login');
+		}
+		$kategori = $this->KategoriModel->detail($id);
+		header('Content-Type: application/json');
+		echo json_encode($kategori); exit;
+    }
+
+	public function update($id) {
+		if(empty($this->session->userdata('is_login'))) {
+			redirect('login');
+		}
+
+		if($this->input->server('REQUEST_METHOD') === 'POST') {
+			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('description', 'Description', 'required');
+
+			$data = [];
+			$data['name'] = $this->input->post('name');
+			$data['description'] = $this->input->post('description');
+			$this->KategoriModel->update($data, $id);
+			redirect('kategori');
+		} else {
+			$kategori = $this->KategoriModel->detail($id);
+			$this->load->view('kategori/ubah', [
+				"data" => $kategori
+			]);
+		}
+    }
 }

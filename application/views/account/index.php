@@ -60,7 +60,7 @@
                                         <i class="fas fa-fw fa-edit"></i></a>
                                         <a data-toggle="tooltip" data-placement="top" title="<?= $label_active; ?>" href="<?php echo $url; ?>" class="btn btn-<?php echo ($value->status == 0 ? "success" : "warning"); ?>">
                                         <i class="fas fa-fw <?= $fa_label; ?>"></i></a>
-                                        <span data-toggle="modal" data-target="#deleteAccountModal"> <!-- Handle multiple toggle -->
+                                        <span data-toggle="modal" data-target="#confirmationModal"> <!-- Handle multiple toggle -->
                                             <a data-user-id="<?= $value->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus Karyawan" class="btn btn-danger btn-delete-account">
                                             <i class="fas fa-fw fa-trash"></i></a>
                                         </span>
@@ -85,7 +85,8 @@
 $(document).ready(function(){
     $('.btn-delete-account').on('click', function(){
         var user_id = $(this).attr('data-user-id');
-        $('#deleteAccountModal a.btn-confirmation-yes').attr('href', '<?= base_url(); ?>karyawan/delete/' + user_id);
+        $('#confirmationModal div.modal-body').text("Apakah anda yakin ingin menghapus akun ini?");
+        $('#confirmationModal a.btn-confirmation-yes').attr('href', '<?= base_url(); ?>karyawan/delete/' + user_id);
     });
 });
 </script>

@@ -83,7 +83,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -99,6 +99,79 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
                 <a class="btn btn-danger btn-confirmation-yes">Ya</a>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-edit-circle" style="color:#FFCC00;"></i> Update Kategori</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control"
+                            placeholder="Nama Kategori" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" class="form-control" placeholder="Deskripsi"
+                            name="description"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success">Simpan</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-edit-circle" style="color:#FFCC00;"></i> Update Item</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <select class="form-control" name="category_id" id="category">
+                            <option value="">Pilih Kategori</option>
+                            <?php
+                                if(!$kategori) {
+                                    $kategori = [];
+                                }
+                            ?>
+                            <?php foreach ($kategori as $key => $value) { ?>
+                                <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-append"><button class="btn btn-primary">Rp</button></div>
+                            <input type="number" class="form-control" name="price" value="" placeholder="Harga Kiloan" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" class="form-control" placeholder="Deskripsi"
+                            name="description"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success">Simpan</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -74,12 +74,18 @@ $route['karyawan/tambah'] = 'account/tambah';
 */
 $route['kategori'] = 'kategori/index';
 $route['kategori/tambah'] = 'kategori/create';
+$route['kategori/(:num)'] = 'kategori/detail/$1';
+$route['kategori/delete/(:num)'] = 'kategori/delete/$1';
+$route['kategori/update/(:num)'] = 'kategori/update/$1';
 
 /*
     Item Routes
 */
 $route['item'] = 'item/index';
 $route['item/tambah'] = 'item/create';
+$route['item/(:num)'] = 'item/detail/$1';
+$route['item/delete/(:num)'] = 'item/delete/$1';
+$route['item/update/(:num)'] = 'item/update/$1';
 
 /*
     Order Routes
