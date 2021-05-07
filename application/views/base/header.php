@@ -18,7 +18,9 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="icon" href="<?php echo base_url(); ?>assets/img/logomagrivyy.jpeg" type="image/icon type">
-    
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body id="page-top">

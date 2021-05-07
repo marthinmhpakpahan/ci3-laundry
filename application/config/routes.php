@@ -96,4 +96,12 @@ $route['order/([a-zA-Z0-9]{6})'] = 'order/detail/$1';
 $route['order/updatestatus'] = 'order/updatestatus';
 $route['order/getorderstatus'] = 'order/getorderstatus';
 
+/*
+    Report Routes
+*/
+$route['laporan'] = 'order/index';
+$route['laporan/pesanan'] = 'report/orderReport';
+$route['laporan/karyawan'] = 'report/employeeReport';
+
+
 $route['tracking'] = 'order/tracking';

@@ -193,6 +193,8 @@
 <script src="<?php echo base_url(); ?>assets/js/demo/chart-area-demo.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo/chart-pie-demo.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js"></script>
+
 <?php
     $this->view('base/footer');
 ?>
