@@ -112,4 +112,16 @@ class Order extends CI_Controller {
 		}
     }
 
+	public function detail($booking_code) {
+		if(empty($this->session->userdata('is_login'))) {
+			redirect('login');
+		}
+		$order = $this->OrderModel->detail($booking_code);
+		$order_status = $this->OrderStatusListModel->index();
+		$this->load->view('order/view', [
+			"data" => $order,
+			"order_status" => $order_status
+		]);
+    }
+
 }

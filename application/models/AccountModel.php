@@ -13,32 +13,32 @@ class AccountModel extends CI_Model {
     }
 
     public function detail($id) {
-        $query = "SELECT * FROM laundry.account WHERE id = $id LIMIT 1";
+        $query = "SELECT * FROM $this->table WHERE id = $id LIMIT 1";
         return $this->db->query($query)->row();
     }
 
     public function delete($id) {
-        $query = "UPDATE laundry.account SET role_id = 0 WHERE id = $id";
+        $query = "UPDATE $this->table SET role_id = 0 WHERE id = $id";
         return $this->db->query($query);
     }
 
     public function getKaryawan() {
-        $query = "SELECT * FROM laundry.account WHERE role_id = 2";
+        $query = "SELECT * FROM $this->table WHERE role_id = 2";
         return $this->db->query($query)->result();
     }
 
     public function enableAccount($account_id) {
-        $query = "UPDATE laundry.account SET status = 1 WHERE id = $account_id";
+        $query = "UPDATE $this->table SET status = 1 WHERE id = $account_id";
         return $this->db->query($query);
     }
 
     public function disableAccount($account_id) {
-        $query = "UPDATE laundry.account SET status = 0 WHERE id = $account_id";
+        $query = "UPDATE $this->table SET status = 0 WHERE id = $account_id";
         return $this->db->query($query);
     }
 
     public function validUser($username, $password) {
-        $query = $this->db->get_where('account',array('username'=>$username, 'status' => 1));
+        $query = $this->db->get_where($this->table,array('username'=>$username, 'status' => 1));
         if($query->num_rows() > 0)
         {
             $data = $query->row();

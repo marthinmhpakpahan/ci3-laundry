@@ -9,7 +9,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">List Pesanan</h1>
         <a href="<?php echo base_url(); ?>order/tambah" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus-circle fa-sm text-white-50"></i> Tambah Pesanan</a>
+                class="fas fa-plus-circle"></i> Tambah Pesanan</a>
     </div>
 
     <!-- Content Row -->
@@ -48,7 +48,7 @@
                                     <td><?php echo $value->full_name; ?></td>
                                     <td><?php echo $value->status; ?></td>
                                     <td class="row">
-                                        <a data-toggle="tooltip" data-placement="top" title="Detail Pesanan" href="#" class="btn btn-primary">
+                                        <a href="<?= base_url(); ?>order/<?= $value->booking_code; ?>" data-toggle="tooltip" data-placement="top" title="Detail Pesanan" href="#" class="btn btn-primary">
                                         <i class="fas fa-fw fa-search"></i></a> &nbsp;
                                         <?php if(strtolower($value->status) != "telah diterima" && strtolower($value->status) != "batal") { ?>
                                             <span data-toggle="modal" data-target="#updateProgressModal"> <!-- Handle multiple toggle -->

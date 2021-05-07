@@ -18,6 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="icon" href="<?php echo base_url(); ?>assets/img/logomagrivyy.jpeg" type="image/icon type">
+    
 </head>
 
 <body id="page-top">

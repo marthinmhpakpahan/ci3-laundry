@@ -24,6 +24,19 @@ class OrderModel extends CI_Model {
         }
         return $randomString;
     }
+
+    public function detail($booking_code) {
+        $order = [];
+        $query = "SELECT o.*, a.full_name as pic FROM laundry.order o INNER JOIN `account` a ON a.id = o.user_id WHERE o.booking_code = '{$booking_code}' LIMIT 1";
+        $order = $this->db->query($query)->row();
+        if($order) {
+            $query_order_status = "SELECT osl.name as status, os.created FROM `order_status` os INNER JOIN order_status_list osl ON osl.id = os.status_id WHERE os.order_id = " . $order->id . " ORDER BY os.created ASC";
+            $order->status_order = $this->db->query($query_order_status)->result();
+            $query_detail_order = "SELECT i.category_id, i.description as item, i.price, c.name as category FROM `item` i INNER JOIN category c ON c.id = i.category_id WHERE i.id = " . $order->item_id;
+            $order->item = $this->db->query($query_detail_order)->row();
+        }
+        return $order;
+    }
 }
 
 ?>

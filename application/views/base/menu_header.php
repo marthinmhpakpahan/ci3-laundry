@@ -70,7 +70,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseItems"
                     aria-expanded="true" aria-controls="collapseItems">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-layer-group"></i>
                     <span>Items</span>
                 </a>
                 <div id="collapseItems" class="collapse" aria-labelledby="headingUtilities"
@@ -86,7 +86,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
                     aria-expanded="true" aria-controls="collapseOrders">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-cart-plus"></i>
                     <span>Pesanan</span>
                 </a>
                 <div id="collapseOrders" class="collapse" aria-labelledby="headingUtilities"
@@ -102,7 +102,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport"
                     aria-expanded="true" aria-controls="collapseReport">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-file-alt"></i>
                     <span>Laporan</span>
                 </a>
                 <div id="collapseReport" class="collapse" aria-labelledby="headingUtilities"
@@ -148,9 +148,9 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
+
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search ">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">

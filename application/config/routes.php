@@ -92,6 +92,7 @@ $route['item/update/(:num)'] = 'item/update/$1';
 */
 $route['order'] = 'order/index';
 $route['order/tambah'] = 'order/create';
+$route['order/([a-zA-Z0-9]{6})'] = 'order/detail/$1';
 $route['order/updatestatus'] = 'order/updatestatus';
 $route['order/getorderstatus'] = 'order/getorderstatus';
 
