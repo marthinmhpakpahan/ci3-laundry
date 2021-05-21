@@ -17,12 +17,16 @@ class Dashboard extends CI_Controller {
 		$order_total = $this->DashboardModel->getTotalOrder();
 		$income_total = $this->DashboardModel->getTotalIncome();
 		$finished_total = $this->DashboardModel->getTotalFinishedOrder();
+		$karyawan_performance = $this->DashboardModel->getKaryawanPerformance();
+		$kategori_performance = $this->DashboardModel->getKategoriPerformance();
 
 		$this->load->view('dashboard', [
 			"karyawan_total" => $karyawan_total,
 			"order_total" => $order_total,
 			"income_total" => $income_total,
-			"finished_total" => $finished_total
+			"finished_total" => $finished_total,
+			"karyawan_performance" => $karyawan_performance,
+			"kategori_performance" => $kategori_performance
 		]);
 	}
 

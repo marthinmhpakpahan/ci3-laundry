@@ -27,6 +27,22 @@ class DashboardModel extends CI_Model {
         $income_total = $this->db->query($query)->row();
         return $income_total ? $income_total : array();
     }
+
+    public function getKaryawanPerformance() {
+        $query = "SELECT o.user_id, a.full_name, COUNT(*) as count_order, FOUND_ROWS() as total_order FROM laundry.order o "
+            . " INNER JOIN laundry.account a ON a.id = o.user_id "
+            . " GROUP BY o.user_id ";
+        $data = $this->db->query($query)->result();
+        return $data ?: array();
+    }
+
+    public function getKategoriPerformance() {
+        $query = "SELECT o.item_id, i.description, COUNT(*) as count_order FROM laundry.order o "
+            . " INNER JOIN laundry.item i ON i.id = o.item_id "
+            . " GROUP BY o.item_id ";
+        $data = $this->db->query($query)->result();
+        return $data ?: array();
+    }
 }
 
 ?>
