@@ -12,6 +12,11 @@ class AccountModel extends CI_Model {
         return $this->db->update($this->table, $data);
     }
 
+    public function updatePassword($data, $id) {
+        $this->db->where('id', $id);
+        return $this->db->update($this->table, $data);
+    }
+
     public function detail($id) {
         $query = "SELECT * FROM $this->table WHERE id = $id LIMIT 1";
         return $this->db->query($query)->row();

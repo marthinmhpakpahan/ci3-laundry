@@ -25,8 +25,9 @@
                         <div class="col-md-6">
                             <h4 class="text-primary">#<?= $data->username; ?></h4>
                         </div>
-                        <div class="col-md-6">
-                            <a href="/karyawan/update/<?= $data->id; ?>" class="btn btn-sm btn-success float-right"><i class="fas fa-edit fa-sm"></i> Ubah Data</a>
+                        <div class="col-md-6 text-right">
+                            <a href="/karyawan/updatepassword/<?= $data->id; ?>" class="btn btn-sm btn-success"><i class="fas fa-key fa-sm"></i> Ubah Password</a>
+                            <a href="/karyawan/update/<?= $data->id; ?>" class="btn btn-sm btn-success"><i class="fas fa-edit fa-sm"></i> Ubah Data</a>
                         </div>
                     </div>
                 </div>

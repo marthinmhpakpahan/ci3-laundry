@@ -102,6 +102,35 @@ class Account extends CI_Controller {
 		}
     }
 
+	public function updatePassword($id) {
+		if(empty($this->session->userdata('is_login'))) {
+			redirect('login');
+		}
+
+		if($this->input->server('REQUEST_METHOD') === 'POST') {
+			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('confirm-password', 'Confirm Password', 'required|matches[password]');
+
+			$this->load->library('encryption');
+			$key = bin2hex($this->encryption->create_key(16));
+			$options = [
+				'cost' => 12,
+				'salt' => $key,
+			];
+			$secure_code = password_hash($this->input->post('password'), PASSWORD_BCRYPT, $options);
+
+			$data = [];
+			$data['password'] = $secure_code;
+			$this->AccountModel->updatePassword($data, $id);
+			redirect('karyawan/' . $id);
+		} else {
+			$user = $this->AccountModel->detail($id);
+			$this->load->view('account/ubahpassword', [
+				"data" => $user
+			]);
+		}
+	}
+
 	public function delete($id) {
 		$this->AccountModel->delete($id);
 		redirect('karyawan');

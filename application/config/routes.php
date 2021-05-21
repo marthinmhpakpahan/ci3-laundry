@@ -68,6 +68,7 @@ $route['karyawan/update/(:num)'] = 'account/update/$1';
 $route['karyawan/enableAccount'] = 'account/enableAccount';
 $route['karyawan/disableAccount'] = 'account/disableAccount';
 $route['karyawan/tambah'] = 'account/tambah';
+$route['karyawan/updatepassword/(:num)'] = 'account/updatePassword/$1';
 
 /*
     Kategori Routes
