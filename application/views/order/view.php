@@ -26,7 +26,12 @@
                             <h4 class="text-primary">#<?= $data->booking_code; ?></h4>
                         </div>
                         <div class="col-md-6">
-                            <a data-order-id="<?php echo $data->id; ?>" data-toggle="modal" data-target="#updateProgressModal" class="btn btn-sm btn-success float-right btn-update-progress"><i class="fas fa-edit fa-sm"></i> Ubah Status Pesanan</a>
+                            <?php
+                                $latest_status = (int)(end($data->status_order)->status_id);
+                                if($latest_status < 7){
+                            ?>
+                                <a data-order-id="<?php echo $data->id; ?>" data-toggle="modal" data-target="#updateProgressModal" class="btn btn-sm btn-success float-right btn-update-progress"><i class="fas fa-edit fa-sm"></i> Ubah Status Pesanan</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

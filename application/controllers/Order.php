@@ -120,7 +120,7 @@ class Order extends CI_Controller {
 		$order_status = $this->OrderStatusListModel->index();
 		$this->load->view('order/view', [
 			"data" => $order,
-			"order_status" => $order_status
+			"order_status" => $order_status,
 		]);
     }
 

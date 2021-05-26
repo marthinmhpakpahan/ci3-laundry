@@ -169,7 +169,7 @@ class Account extends CI_Controller {
 				$data['status'] = 1;
 				$data['role_id'] = 2;
 				$this->AccountModel->save($data);
-				redirect('login');
+				redirect('karyawan');
 			} else {
 				$this->load->view('account/register');
 			}
