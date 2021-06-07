@@ -32,10 +32,10 @@ class LaporanModel extends CI_Model {
     public function indexPesananReport($type="harian", $start_date="", $end_date="") {
         $where_date = "";
         if($start_date != "") {
-            $where_date .= " AND o.created_date >= '{$start_date}' ";
+            $where_date .= " AND sqo.created_date >= '{$start_date}' ";
         }
         if($end_date != "") {
-            $where_date .= " AND o.created_date <= '{$end_date}' ";
+            $where_date .= " AND sqo.created_date <= '{$end_date}' ";
         }
 
         $formatted_date = "DATE_FORMAT(created_date, '%Y-%m-%d')";
@@ -61,7 +61,7 @@ class LaporanModel extends CI_Model {
                 INNER JOIN (SELECT order_id, MAX(status_id) as status_id FROM order_status GROUP BY order_id) os ON os.order_id = sqo.id WHERE $where_formatted_date = o.formatted_date AND (os.status_id = 7)) price_in_done,
             (SELECT SUM(sqo.total_price) FROM laundry.order sqo
                 INNER JOIN (SELECT order_id, MAX(status_id) as status_id FROM order_status GROUP BY order_id) os ON os.order_id = sqo.id WHERE $where_formatted_date = o.formatted_date AND (os.status_id = 8)) price_in_cancel
-            FROM (SELECT $formatted_date AS formatted_date FROM laundry.order WHERE 1=1 $where_date GROUP BY formatted_date) o";
+            FROM (SELECT $formatted_date AS formatted_date FROM laundry.order sqo WHERE 1=1 $where_date GROUP BY formatted_date) o";
         return $this->db->query($query)->result();
     }
 }
